@@ -1,0 +1,118 @@
+@charset "UTF-8";
+*::before,
+*,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  /*perspective: 200px;
+  box-shadow: inset 0 0 200px;
+  animation: focusToSlider 500ms ease-out reverse;*/
+}
+.cd__main{
+  background: transparent !important;
+  position: relative;
+}
+.image-slider-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border: 5px solid #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  transform: scale(1) rotate(0);
+  transition: transform 300ms ease;
+  transform-style: preserve-3d;
+}
+.image-slider-container .image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+}
+.image-slider-container .image:nth-child(1) {
+  background: url("https://cdn.pixabay.com/photo/2014/04/17/23/26/environmental-protection-326923_1280.jpg");
+  filter: grayscale(100%) blur(2.5px);
+}
+.image-slider-container .image:nth-child(2) {
+  background: url("https://cdn.pixabay.com/photo/2014/04/17/23/26/environmental-protection-326923_1280.jpg");
+  filter: saturate(1.3);
+  width: 50%;
+}
+.image-slider-container .range-slider {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: rgba(242, 242, 242, 0.2);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  z-index: 2;
+  transition: all 200ms linear;
+}
+.image-slider-container .range-slider:hover {
+  background: rgba(242, 242, 242, 0.1);
+}
+.image-slider-container .range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 6px;
+  height: 800px;
+  background: white;
+  cursor: move;
+  transition: all 300ms ease;
+}
+
+.slider-control {
+  z-index: 0;
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -50%);
+  cursor: grab;
+}
+.slider-control::after, .slider-control::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.slider-control::after {
+  content: "";
+  right: 3px;
+}
+.slider-control::before {
+  content: "";
+  left: 3px;
+}
+
+@keyframes focusToSlider {
+  from {
+    box-shadow: inset 0 0 200px;
+  }
+  to {
+    box-shadow: inset 0 0 0 0;
+  }
+}
